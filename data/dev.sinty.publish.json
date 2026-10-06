@@ -1,0 +1,85 @@
+{
+    "schema-id": "dev.sinty.publish",
+    "settings": [
+        {
+            "key": "default-page-size",
+            "label": "Page Size for New Publications",
+            "type": "string",
+            "widget": "combo",
+            "options": [
+                { "id": "a4", "label": "A4" },
+                { "id": "a5", "label": "A5" },
+                { "id": "a3", "label": "A3" },
+                { "id": "letter", "label": "US Letter" },
+                { "id": "legal", "label": "US Legal" },
+                { "id": "tabloid", "label": "Tabloid" }
+            ]
+        },
+        {
+            "key": "default-units",
+            "label": "Measurement Units",
+            "type": "string",
+            "widget": "combo",
+            "options": [
+                { "id": "mm", "label": "Millimeters" },
+                { "id": "cm", "label": "Centimeters" },
+                { "id": "in", "label": "Inches" },
+                { "id": "pt", "label": "Points" },
+                { "id": "pc", "label": "Picas" },
+                { "id": "px", "label": "Pixels" }
+            ]
+        },
+        {
+            "key": "default-bleed",
+            "label": "Add Bleed to New Publications",
+            "type": "boolean",
+            "widget": "toggle",
+            "subtitle": "3 mm past the trim on every side"
+        },
+        {
+            "key": "link-images",
+            "label": "Link Placed Pictures",
+            "type": "boolean",
+            "widget": "toggle",
+            "subtitle": "Turn off to embed pictures in the publication"
+        },
+        {
+            "key": "preflight-min-ppi",
+            "label": "Minimum Picture Resolution (ppi)",
+            "type": "int",
+            "widget": "spin",
+            "min": 72,
+            "max": 1200
+        },
+        {
+            "key": "snap-to-guides",
+            "label": "Snap to Guides",
+            "type": "boolean",
+            "widget": "toggle"
+        },
+        {
+            "key": "smart-guides",
+            "label": "Smart Guides",
+            "type": "boolean",
+            "widget": "toggle",
+            "subtitle": "Snap to the edges and centres of other objects"
+        },
+        {
+            "key": "export-dpi",
+            "label": "Exported Image Resolution (ppi)",
+            "type": "int",
+            "widget": "spin",
+            "min": 36,
+            "max": 1200
+        },
+        {
+            "key": "autosave-interval",
+            "label": "Autosave Interval (seconds)",
+            "type": "int",
+            "widget": "spin",
+            "min": 0,
+            "max": 3600,
+            "subtitle": "0 turns autosave off"
+        }
+    ]
+}

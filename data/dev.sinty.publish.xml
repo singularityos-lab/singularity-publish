@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-sinty-publication">
+    <comment>Publish document</comment>
+    <sub-class-of type="application/zip"/>
+    <glob pattern="*.spub"/>
+    <magic priority="60">
+      <match type="string" offset="30" value="mimetypeapplication/x-sinty-publication"/>
+    </magic>
+  </mime-type>
+  <mime-type type="application/vnd.scribus">
+    <comment>Scribus document</comment>
+    <sub-class-of type="application/xml"/>
+    <glob pattern="*.sla"/>
+    <glob pattern="*.sla.gz"/>
+  </mime-type>
+  <mime-type type="application/vnd.adobe.indesign-idml-package">
+    <comment>InDesign markup package</comment>
+    <sub-class-of type="application/zip"/>
+    <glob pattern="*.idml"/>
+  </mime-type>
+  <mime-type type="application/x-mspublisher">
+    <comment>Microsoft Publisher publication</comment>
+    <sub-class-of type="application/x-ole-storage"/>
+    <glob pattern="*.pub"/>
+  </mime-type>
+  <mime-type type="application/x-indesign">
+    <comment>InDesign document</comment>
+    <glob pattern="*.indd"/>
+  </mime-type>
+</mime-info>

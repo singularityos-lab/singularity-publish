@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCRIBUSUTF8NEW Version="1.5.8">
+    <DOCUMENT ANZPAGES="2" PAGEWIDTH="595.28" PAGEHEIGHT="841.89" BORDERLEFT="40" BORDERRIGHT="30" BORDERTOP="50" BORDERBOTTOM="60" PRESET="0" BleedTop="8.5" BleedLeft="8.5" BleedRight="8.5" BleedBottom="8.5" ORIENTATION="0" PAGESIZE="A4" FIRSTNUM="1" BOOK="0" UNITS="1" TITLE="Spring Brochure" AUTHOR="Test Author" SUBJECT="Offers" KEYWORDS="spring, sale" DFONT="DejaVu Sans Book" DSIZE="10" LANGUAGE="en_GB">
+        <COLOR NAME="Black" SPACE="CMYK" C="0" M="0" Y="0" K="100"/>
+        <COLOR NAME="White" SPACE="CMYK" C="0" M="0" Y="0" K="0"/>
+        <COLOR NAME="Brand Blue" SPACE="CMYK" C="100" M="60" Y="0" K="10"/>
+        <COLOR NAME="Pantone 185 C" SPACE="CMYK" C="0" M="90" Y="80" K="0" Spot="1"/>
+        <COLOR NAME="Web Orange" SPACE="RGB" R="255" G="128" B="0"/>
+        <COLOR NAME="Registration" SPACE="CMYK" C="100" M="100" Y="100" K="100" Register="1"/>
+        <STYLE NAME="Default Paragraph Style" DefaultStyle="1" ALIGN="0" LINESPMode="0" LINESP="13" INDENT="0" RMARGIN="0" FIRST="0" VOR="0" NACH="0" DROP="0" DROPLIN="2" FONT="DejaVu Sans Book" FONTSIZE="10" FCOLOR="Black" FSHADE="100" FEATURES="inherit"/>
+        <STYLE NAME="Body" ALIGN="3" FIRST="12">
+            <Tabs Type="1" Pos="200" Fill="."/>
+        </STYLE>
+        <STYLE NAME="Heading" FONT="DejaVu Sans Bold" FONTSIZE="24" LINESPMode="0" LINESP="28" VOR="4" NACH="6" KeepWithNext="1"/>
+        <STYLE NAME="Subheading" PARENT="Heading" FONTSIZE="16" FCOLOR="Brand Blue" FSHADE="80"/>
+        <STYLE NAME="Intro" PARENT="Body" DROP="1" DROPLIN="3"/>
+        <STYLE NAME="Points" PARENT="Body" Bullet="1" BulletStr="-" INDENT="14" FIRST="-10"/>
+        <CHARSTYLE CNAME="Default Character Style" DefaultStyle="1" FONT="DejaVu Sans Book" FONTSIZE="10" FCOLOR="Black" FEATURES="inherit"/>
+        <CHARSTYLE CNAME="Accent" FCOLOR="Brand Blue" FEATURES="inherit underline"/>
+        <CHARSTYLE CNAME="Loud" CPARENT="Accent" FONT="DejaVu Sans Bold"/>
+        <LAYERS NUMMER="0" LEVEL="0" NAME="Background" SICHTBAR="1" DRUCKEN="1" EDIT="1" SELECT="0" FLOW="1" TRANS="1" BLEND="0" OUTL="0" LAYERC="#000000"/>
+        <LAYERS NUMMER="1" LEVEL="1" NAME="Text" SICHTBAR="1" DRUCKEN="1" EDIT="0" SELECT="0" FLOW="1" TRANS="1" BLEND="0" OUTL="0" LAYERC="#ff0000"/>
+        <PageSets>
+            <Set Name="Single Page" FirstPage="0" Rows="1" Columns="1"/>
+        </PageSets>
+        <Sections>
+            <Section Number="0" Name="Front" From="0" To="1" Type="Type_i_ii_iii" Start="3" Reversed="0" Active="1" FillChar="0" FieldWidth="0"/>
+        </Sections>
+        <MASTERPAGE PAGEXPOS="100" PAGEYPOS="20" PAGEWIDTH="595.28" PAGEHEIGHT="841.89" BORDERLEFT="40" BORDERRIGHT="30" BORDERTOP="50" BORDERBOTTOM="60" NUM="0" NAM="Normal" MNAM="" Size="A4" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides="400 "/>
+        <PAGE PAGEXPOS="100" PAGEYPOS="20" PAGEWIDTH="595.28" PAGEHEIGHT="841.89" BORDERLEFT="40" BORDERRIGHT="30" BORDERTOP="50" BORDERBOTTOM="60" NUM="0" NAM="" MNAM="Normal" Size="A4" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="100 200 " HorizontalGuides="" AGverticalAutoCount="2" AGverticalAutoGap="12"/>
+        <PAGE PAGEXPOS="100" PAGEYPOS="901.89" PAGEWIDTH="595.28" PAGEHEIGHT="841.89" BORDERLEFT="40" BORDERRIGHT="30" BORDERTOP="50" BORDERBOTTOM="60" NUM="1" NAM="" MNAM="Normal" Size="A4" Orientation="0" LEFT="0" PRESET="0" VerticalGuides="" HorizontalGuides=""/>
+        <MASTEROBJECT ItemID="900" PTYPE="4" OnMasterPage="Normal" OwnPage="0" XPOS="600" YPOS="820" WIDTH="60" HEIGHT="20" ROT="0" PCOLOR="None" PCOLOR2="None" PWIDTH="1" PLINEART="1" FRTYPE="0" LAYER="0" NEXTITEM="-1" BACKITEM="-1" COLUMNS="1" COLGAP="0" path="M0 0 L60 0 L60 20 L0 20 L0 0 Z">
+            <StoryText>
+                <DefaultStyle/>
+                <ITEXT CH="Page "/>
+                <var name="pgno"/>
+                <trail ALIGN="2"/>
+            </StoryText>
+        </MASTEROBJECT>
+        <PAGEOBJECT ItemID="1001" PTYPE="4" OwnPage="0" XPOS="140" YPOS="70" WIDTH="300" HEIGHT="400" ROT="0" PCOLOR="None" PCOLOR2="None" PWIDTH="1" PLINEART="1" FRTYPE="0" LAYER="1" NEXTITEM="1002" BACKITEM="-1" COLUMNS="2" COLGAP="12" EXTRA="2" TEXTRA="3" BEXTRA="4" REXTRA="5" VAlign="1" path="M0 0 L300 0 L300 400 L0 400 L0 0 Z">
+            <StoryText>
+                <DefaultStyle PARENT="Body"/>
+                <ITEXT CH="Spring Sale"/>
+                <para PARENT="Heading"/>
+                <ITEXT CH="Our best offers "/>
+                <ITEXT CPARENT="Accent" CH="this week"/>
+                <tab/>
+                <ITEXT CH="12"/>
+                <para PARENT="Body"/>
+                <ITEXT CH="Second paragraph with "/>
+                <breakline/>
+                <ITEXT FONT="DejaVu Sans Bold Oblique" FONTSIZE="11" FCOLOR="Web Orange" CH="bold italic"/>
+                <ITEXT CH=" and "/>
+                <ITEXT FEATURES="superscript" CH="sup"/>
+                <para PARENT="Intro" ALIGN="1"/>
+                <ITEXT CPARENT="Loud" CH="First point"/>
+                <trail PARENT="Points"/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT ItemID="1003" PTYPE="2" OwnPage="0" XPOS="450" YPOS="80" WIDTH="150" HEIGHT="100" ROT="0" PCOLOR="None" PCOLOR2="Black" PWIDTH="0.5" PLINEART="1" FRTYPE="1" LAYER="0" PFILE="photo.png" SCALETYPE="1" RATIO="1" LOCALSCX="0.5" LOCALSCY="0.5" LOCALX="10" LOCALY="20" LOCALROT="0" TEXTFLOWMODE="3" path=""/>
+        <PAGEOBJECT ItemID="1004" PTYPE="6" OwnPage="0" XPOS="150" YPOS="520" WIDTH="80" HEIGHT="60" ROT="0" PCOLOR="Brand Blue" SHADE="50" PCOLOR2="Black" SHADE2="100" PWIDTH="2" PLINEART="1" FRTYPE="1" LAYER="0" TransValue="0.25" TEXTFLOWMODE="1" HASSOFTSHADOW="1" SOFTSHADOWXOFFSET="4" SOFTSHADOWYOFFSET="5" SOFTSHADOWBLURRADIUS="7" SOFTSHADOWCOLOR="Black" SOFTSHADOWSHADE="100" SOFTSHADOWOPACITY="0.5" path=""/>
+        <PAGEOBJECT ItemID="1005" PTYPE="6" OwnPage="0" XPOS="400" YPOS="520" WIDTH="100" HEIGHT="50" ROT="90" PCOLOR="Pantone 185 C" SHADE="100" PCOLOR2="None" PWIDTH="0" PLINEART="1" FRTYPE="0" LAYER="0" LOCK="1" path="M0 0 L100 0 L100 50 L0 50 L0 0 Z"/>
+        <PAGEOBJECT ItemID="1006" PTYPE="5" OwnPage="0" XPOS="150" YPOS="720" WIDTH="100" HEIGHT="1" ROT="0" PCOLOR="None" PCOLOR2="Black" PWIDTH="1" PLINEART="2" FRTYPE="3" LAYER="0" path="M0 0 L100 0"/>
+        <PAGEOBJECT ItemID="1007" PTYPE="6" OwnPage="0" XPOS="300" YPOS="620" WIDTH="100" HEIGHT="80" ROT="0" PCOLOR="Web Orange" PCOLOR2="None" PWIDTH="0" PLINEART="1" FRTYPE="3" LAYER="0" path="M0 0 L100 0 L50 80 Z"/>
+        <PAGEOBJECT ItemID="1008" PTYPE="12" OwnPage="0" XPOS="500" YPOS="620" WIDTH="100" HEIGHT="100" ROT="0" PCOLOR="None" PCOLOR2="None" LAYER="0" groupWidth="100" groupHeight="100">
+            <PAGEOBJECT ItemID="1009" PTYPE="6" OwnPage="0" XPOS="0" YPOS="0" WIDTH="40" HEIGHT="40" ROT="0" PCOLOR="Black" PCOLOR2="None" FRTYPE="0" LAYER="0"/>
+            <PAGEOBJECT ItemID="1010" PTYPE="6" OwnPage="0" XPOS="60" YPOS="60" WIDTH="40" HEIGHT="40" ROT="0" PCOLOR="Brand Blue" PCOLOR2="None" FRTYPE="2" RADRECT="6" LAYER="0"/>
+        </PAGEOBJECT>
+        <PAGEOBJECT ItemID="1002" PTYPE="4" OwnPage="1" XPOS="140" YPOS="951.89" WIDTH="300" HEIGHT="300" ROT="0" PCOLOR="None" PCOLOR2="None" PWIDTH="1" PLINEART="1" FRTYPE="0" LAYER="1" NEXTITEM="-1" BACKITEM="1001" COLUMNS="1" COLGAP="0" path="M0 0 L300 0 L300 300 L0 300 L0 0 Z">
+            <StoryText>
+                <DefaultStyle/>
+            </StoryText>
+        </PAGEOBJECT>
+        <PAGEOBJECT ItemID="1011" PTYPE="16" OwnPage="1" XPOS="140" YPOS="1301.89" WIDTH="120" HEIGHT="50" ROT="0" PCOLOR="None" PCOLOR2="None" LAYER="0" Rows="2" Columns="2" RowHeights="20 30" ColumnWidths="50 70">
+            <TableData>
+                <Cell Row="0" Column="0" RowSpan="1" ColumnSpan="1">
+                    <StoryText><DefaultStyle/><ITEXT CH="A1"/><trail/></StoryText>
+                </Cell>
+                <Cell Row="1" Column="1" RowSpan="1" ColumnSpan="1" FillColor="Web Orange">
+                    <StoryText><DefaultStyle/><ITEXT CH="B2"/><trail/></StoryText>
+                </Cell>
+            </TableData>
+        </PAGEOBJECT>
+        <PAGEOBJECT ItemID="1012" PTYPE="9" OwnPage="1" XPOS="400" YPOS="1000" WIDTH="100" HEIGHT="100" ROT="0" LAYER="0"/>
+    </DOCUMENT>
+</SCRIBUSUTF8NEW>

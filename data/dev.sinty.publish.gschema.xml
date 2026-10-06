@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="dev.sinty.publish" path="/dev/sinty/publish/">
+    <key name="default-page-size" type="s">
+      <default>'a4'</default>
+      <summary>Page size for new publications</summary>
+    </key>
+    <key name="default-units" type="s">
+      <choices>
+        <choice value="mm"/>
+        <choice value="cm"/>
+        <choice value="in"/>
+        <choice value="pt"/>
+        <choice value="pc"/>
+        <choice value="px"/>
+      </choices>
+      <default>'mm'</default>
+      <summary>Measurement units for new publications</summary>
+    </key>
+    <key name="default-pages" type="i">
+      <range min="1" max="999"/>
+      <default>1</default>
+      <summary>Number of pages in a new publication</summary>
+    </key>
+    <key name="default-bleed" type="b">
+      <default>true</default>
+      <summary>Add a 3 mm bleed to new publications</summary>
+    </key>
+    <key name="link-images" type="b">
+      <default>true</default>
+      <summary>Link placed pictures instead of embedding them</summary>
+    </key>
+    <key name="preflight-min-ppi" type="i">
+      <range min="72" max="1200"/>
+      <default>250</default>
+      <summary>Lowest picture resolution preflight accepts without a warning</summary>
+    </key>
+    <key name="show-rulers" type="b">
+      <default>true</default>
+      <summary>Show rulers</summary>
+    </key>
+    <key name="show-guides" type="b">
+      <default>true</default>
+      <summary>Show margins, columns and guides</summary>
+    </key>
+    <key name="snap-to-guides" type="b">
+      <default>true</default>
+      <summary>Snap objects to guides, margins and page edges</summary>
+    </key>
+    <key name="smart-guides" type="b">
+      <default>true</default>
+      <summary>Snap to the edges and centres of other objects</summary>
+    </key>
+    <key name="show-baseline-grid" type="b">
+      <default>false</default>
+      <summary>Show the baseline grid</summary>
+    </key>
+    <key name="show-frame-edges" type="b">
+      <default>true</default>
+      <summary>Show the edges of text frames</summary>
+    </key>
+    <key name="show-format-panel" type="b">
+      <default>true</default>
+      <summary>Show the format panel</summary>
+    </key>
+    <key name="export-crop-marks" type="b">
+      <default>true</default>
+      <summary>Add crop marks to exported PDFs</summary>
+    </key>
+    <key name="export-dpi" type="i">
+      <range min="36" max="1200"/>
+      <default>150</default>
+      <summary>Resolution of exported images</summary>
+    </key>
+    <key name="autosave-interval" type="i">
+      <range min="0" max="3600"/>
+      <default>0</default>
+      <summary>Autosave interval in seconds, 0 to disable</summary>
+    </key>
+  </schema>
+</schemalist>

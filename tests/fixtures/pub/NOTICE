@@ -1,0 +1,5 @@
+text-frames.pub is testPUBLISHER.pub from the Apache Tika test documents
+(https://github.com/apache/tika, tika-parsers test resources).
+It is distributed under the Apache License, Version 2.0:
+https://www.apache.org/licenses/LICENSE-2.0
+It is used only by the automated tests.

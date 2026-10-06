@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/dev/sinty/publish/icons/scalable/actions">
+    <file alias="publish-align-bottom-symbolic.svg">symbolic/publish-align-bottom-symbolic.svg</file>
+    <file alias="publish-align-center-h-symbolic.svg">symbolic/publish-align-center-h-symbolic.svg</file>
+    <file alias="publish-align-center-v-symbolic.svg">symbolic/publish-align-center-v-symbolic.svg</file>
+    <file alias="publish-align-left-symbolic.svg">symbolic/publish-align-left-symbolic.svg</file>
+    <file alias="publish-align-right-symbolic.svg">symbolic/publish-align-right-symbolic.svg</file>
+    <file alias="publish-align-top-symbolic.svg">symbolic/publish-align-top-symbolic.svg</file>
+    <file alias="publish-baseline-grid-symbolic.svg">symbolic/publish-baseline-grid-symbolic.svg</file>
+    <file alias="publish-bleed-symbolic.svg">symbolic/publish-bleed-symbolic.svg</file>
+    <file alias="publish-bring-front-symbolic.svg">symbolic/publish-bring-front-symbolic.svg</file>
+    <file alias="publish-content-symbolic.svg">symbolic/publish-content-symbolic.svg</file>
+    <file alias="publish-distribute-h-symbolic.svg">symbolic/publish-distribute-h-symbolic.svg</file>
+    <file alias="publish-distribute-v-symbolic.svg">symbolic/publish-distribute-v-symbolic.svg</file>
+    <file alias="publish-ellipse-symbolic.svg">symbolic/publish-ellipse-symbolic.svg</file>
+    <file alias="publish-group-symbolic.svg">symbolic/publish-group-symbolic.svg</file>
+    <file alias="publish-guides-symbolic.svg">symbolic/publish-guides-symbolic.svg</file>
+    <file alias="publish-hand-symbolic.svg">symbolic/publish-hand-symbolic.svg</file>
+    <file alias="publish-image-frame-symbolic.svg">symbolic/publish-image-frame-symbolic.svg</file>
+    <file alias="publish-imposition-symbolic.svg">symbolic/publish-imposition-symbolic.svg</file>
+    <file alias="publish-layers-symbolic.svg">symbolic/publish-layers-symbolic.svg</file>
+    <file alias="publish-line-symbolic.svg">symbolic/publish-line-symbolic.svg</file>
+    <file alias="publish-links-symbolic.svg">symbolic/publish-links-symbolic.svg</file>
+    <file alias="publish-master-symbolic.svg">symbolic/publish-master-symbolic.svg</file>
+    <file alias="publish-merge-symbolic.svg">symbolic/publish-merge-symbolic.svg</file>
+    <file alias="publish-pages-symbolic.svg">symbolic/publish-pages-symbolic.svg</file>
+    <file alias="publish-polygon-symbolic.svg">symbolic/publish-polygon-symbolic.svg</file>
+    <file alias="publish-preflight-symbolic.svg">symbolic/publish-preflight-symbolic.svg</file>
+    <file alias="publish-rectangle-symbolic.svg">symbolic/publish-rectangle-symbolic.svg</file>
+    <file alias="publish-select-symbolic.svg">symbolic/publish-select-symbolic.svg</file>
+    <file alias="publish-send-back-symbolic.svg">symbolic/publish-send-back-symbolic.svg</file>
+    <file alias="publish-star-symbolic.svg">symbolic/publish-star-symbolic.svg</file>
+    <file alias="publish-story-editor-symbolic.svg">symbolic/publish-story-editor-symbolic.svg</file>
+    <file alias="publish-styles-symbolic.svg">symbolic/publish-styles-symbolic.svg</file>
+    <file alias="publish-swatches-symbolic.svg">symbolic/publish-swatches-symbolic.svg</file>
+    <file alias="publish-table-symbolic.svg">symbolic/publish-table-symbolic.svg</file>
+    <file alias="publish-text-frame-symbolic.svg">symbolic/publish-text-frame-symbolic.svg</file>
+    <file alias="publish-thread-symbolic.svg">symbolic/publish-thread-symbolic.svg</file>
+    <file alias="publish-ungroup-symbolic.svg">symbolic/publish-ungroup-symbolic.svg</file>
+    <file alias="publish-wrap-symbolic.svg">symbolic/publish-wrap-symbolic.svg</file>
+  </gresource>
+</gresources>

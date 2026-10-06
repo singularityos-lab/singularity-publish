@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=Publish
+Comment=Lay out flyers, brochures, newsletters and cards for print
+Exec=singularity-publish %U
+Icon=dev.sinty.publish
+Terminal=false
+Type=Application
+Categories=Office;Publishing;Graphics;
+MimeType=application/x-sinty-publication;application/vnd.scribus;application/vnd.adobe.indesign-idml-package;application/x-mspublisher;application/vnd.ms-publisher;application/x-indesign;
+Keywords=publisher;desktop publishing;dtp;layout;flyer;brochure;newsletter;business card;poster;indesign;scribus;idml;sla;pub;mail merge;
+StartupWMClass=dev.sinty.publish
+X-Singularity-Dock-Recent=true
+Actions=new-publication;from-template;
+
+[Desktop Action new-publication]
+Name=New Publication
+Icon=document-new-symbolic
+Exec=singularity-publish --new
+
+[Desktop Action from-template]
+Name=New from Template
+Icon=x-office-document-template-symbolic
+Exec=singularity-publish --templates
