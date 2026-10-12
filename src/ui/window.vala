@@ -589,6 +589,20 @@ namespace Singularity.Apps.Publish {
             track (find);
             var format = add_bubble_icon ("document-properties-symbolic", _("Show Inspector (Ctrl+F9)"), () => toggle_panel (right_stack.visible_child_name ?? "format"));
             track (format);
+            if (Singularity.Collab.Client.installed ()) {
+                Gtk.Widget? together = null;
+                together = add_bubble_icon ("system-users-symbolic", _("Work Together"), () => {
+                    if (PublishLive.of (this) != null) {
+                        var m = bubble_menu (together);
+                        if (PublishLive.of (this).session.collab_hosting) m.add_item (_("Invite More People…"), "system-users-symbolic", () => PublishLive.share (this, together));
+                        m.add_item (_("Stop Working Together"), "process-stop-symbolic", () => PublishLive.stop (this));
+                        popup_menu (m);
+                        return;
+                    }
+                    PublishLive.share (this, together);
+                });
+                track (together);
+            }
             var export = add_bubble_suggested (_("Export"), () => { });
             export.tooltip_text = _("Export as PDF, images, web page, XPS, Word, ODG, IDML or Scribus");
             export.clicked.connect (() => {

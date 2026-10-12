@@ -236,6 +236,7 @@ ui = files(
   'src/ui/find_dialog.vala',
   'src/ui/text_edit.vala',
   'src/ui/window.vala',
+  'src/ui/live_publish.vala',
   'src/io/pdfx_verify.vala',
 )
 
@@ -308,4 +309,17 @@ install_data('data/dev.sinty.publish.xml',
 )
 install_data('data/icons/dev.sinty.publish.svg',
   install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
+)
+
+install_data('data/capabilities/dev.sinty.Collab.Publication1.ini',
+  install_dir: get_option('datadir') / 'singularity' / 'capabilities')
+
+publish_service_conf = configuration_data()
+publish_service_conf.set('bindir', get_option('prefix') / get_option('bindir'))
+configure_file(
+  input: 'data/dev.sinty.publish.service.in',
+  output: 'dev.sinty.publish.service',
+  configuration: publish_service_conf,
+  install: true,
+  install_dir: get_option('datadir') / 'dbus-1' / 'services'
 )
