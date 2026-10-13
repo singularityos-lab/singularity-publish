@@ -400,7 +400,9 @@ namespace Singularity.Apps.Publish {
             zip.add_text ("mimetype", "application/vnd.oasis.opendocument.graphics", false);
             var man = new StringBuilder ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<manifest:manifest xmlns:manifest=\"urn:oasis:names:tc:opendocument:xmlns:manifest:1.0\" manifest:version=\"1.3\"><manifest:file-entry manifest:full-path=\"/\" manifest:version=\"1.3\" manifest:media-type=\"application/vnd.oasis.opendocument.graphics\"/><manifest:file-entry manifest:full-path=\"content.xml\" manifest:media-type=\"text/xml\"/><manifest:file-entry manifest:full-path=\"styles.xml\" manifest:media-type=\"text/xml\"/><manifest:file-entry manifest:full-path=\"meta.xml\" manifest:media-type=\"text/xml\"/>");
             foreach (string p in pictures) {
-                string mime = p.has_suffix (".png") ? "image/png" : (p.has_suffix (".jpg") ? "image/jpeg" : "image/" + p.substring (p.last_index_of (".") + 1));
+                string mime = "image/" + p.substring (p.last_index_of (".") + 1);
+                if (p.has_suffix (".png")) mime = "image/png";
+                else if (p.has_suffix (".jpg")) mime = "image/jpeg";
                 man.append ("<manifest:file-entry manifest:full-path=\"%s\" manifest:media-type=\"%s\"/>".printf (p, mime));
             }
             man.append ("</manifest:manifest>");

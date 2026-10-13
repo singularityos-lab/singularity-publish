@@ -120,7 +120,8 @@ namespace Singularity.Apps.Publish {
             s.units = u >= 0 && u < units.length ? units[u] : "pt";
             string? ps = XmlIn.attr (dn, "PAGESIZE");
             var match = PageSize.match (s.width, s.height);
-            s.page_size = match != null ? match.id : (ps != null ? ps.down () : "custom");
+            if (match != null) s.page_size = match.id;
+            else s.page_size = ps != null ? ps.down () : "custom";
             s.cmyk = true;
             s.baseline_step = num (dn, "BaseGridSpace", s.baseline_step);
             s.baseline_start = num (dn, "BaseGridOffset", s.baseline_start);

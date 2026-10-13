@@ -166,7 +166,8 @@ namespace Singularity.Apps.Publish {
                 double x1 = pl.x + b.x * pl.scale, x2 = pl.x + (b.x + b.w) * pl.scale;
                 double y1 = pl.sheet_h - (pl.y + (b.y + b.h) * pl.scale), y2 = pl.sheet_h - (pl.y + b.y * pl.scale);
                 var f = r.item.form;
-                string name = f.name != "" ? f.name : (r.item.name != "" ? r.item.name : "Field%d".printf (auto_n++));
+                string name = f.name;
+                if (name == "") name = r.item.name != "" ? r.item.name : "Field%d".printf (auto_n++);
                 Singularity.Pdf.FieldType type;
                 switch (f.kind) {
                     case FormKind.TEXT: type = Singularity.Pdf.FieldType.TEXT; break;
