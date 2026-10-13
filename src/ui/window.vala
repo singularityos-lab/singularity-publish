@@ -553,9 +553,9 @@ namespace Singularity.Apps.Publish {
         }
 
         private void anchor_to (Popover pop, Widget bubble) {
-            if (pop.get_parent () == null) pop.set_parent (content_stack);
+            if (pop.get_parent () == null) pop.set_parent (content_area);
             Graphene.Rect bounds;
-            if (bubble.compute_bounds (content_stack, out bounds)) {
+            if (bubble.compute_bounds (content_area, out bounds)) {
                 var rect = Gdk.Rectangle ();
                 rect.x = (int) bounds.origin.x;
                 rect.y = (int) bounds.origin.y;
