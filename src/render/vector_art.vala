@@ -56,11 +56,32 @@ namespace Singularity.Apps.Publish {
                 return;
             }
             if (svg != null) {
-                double pw, ph;
-                if (svg.get_intrinsic_size_in_pixels (out pw, out ph)) {
+                bool has_w, has_h, has_vb;
+                Rsvg.Length lw, lh;
+                Rsvg.Rectangle vb;
+                svg.get_intrinsic_dimensions (out has_w, out lw, out has_h, out lh, out has_vb, out vb);
+                double pw = 0, ph = 0;
+                bool sized = has_w && has_h && to_px (lw, out pw) && to_px (lh, out ph);
+                if (!sized && has_vb) {
+                    pw = vb.width;
+                    ph = vb.height;
+                }
+                if (pw > 0 && ph > 0) {
                     w = pw * 0.75;
                     h = ph * 0.75;
                 }
+            }
+        }
+
+        private static bool to_px (Rsvg.Length l, out double px) {
+            switch (l.unit) {
+                case Rsvg.Unit.PX: px = l.length; return true;
+                case Rsvg.Unit.IN: px = l.length * 96; return true;
+                case Rsvg.Unit.CM: px = l.length * 96 / 2.54; return true;
+                case Rsvg.Unit.MM: px = l.length * 96 / 25.4; return true;
+                case Rsvg.Unit.PT: px = l.length * 96 / 72; return true;
+                case Rsvg.Unit.PC: px = l.length * 16; return true;
+                default: px = 0; return false;
             }
         }
 
