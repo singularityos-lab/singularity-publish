@@ -108,6 +108,16 @@ core = files(
   'src/render/shapes_lib.vala',
 )
 
+gtk_dep = dependency('gtk4')
+libsingularity_dep = dependency('singularity-1.0',
+  fallback: ['libsingularity', 'libsingularity_dep']
+)
+
+if not meson.is_subproject() and libsingularity_dep.type_name() == 'internal'
+  libsingularity_vapi_dir = join_paths(meson.project_build_root(), 'subprojects', 'libsingularity')
+  add_project_arguments(['--vapidir=' + libsingularity_vapi_dir], language: 'vala')
+endif
+
 pdf_engine_dep = subproject('libsingularity').get_variable('libsingularity_pdf_dep')
 core_deps = [rsvg_dep, poppler_dep, pdf_engine_dep, gee_dep, gio_dep, xml_dep, zlib_dep, pango_dep, pixbuf_dep, math_dep, cairo_gobject_dep, fontconfig_dep, pangoft2_dep]
 if lcms_dep.found()
@@ -189,16 +199,6 @@ templates_test = executable('publish-templates-test',
   vala_args: core_vala_args,
 )
 test('templates', templates_test, env: test_env, timeout: 300)
-
-gtk_dep = dependency('gtk4')
-libsingularity_dep = dependency('singularity-1.0',
-  fallback: ['libsingularity', 'libsingularity_dep']
-)
-
-if not meson.is_subproject() and libsingularity_dep.type_name() == 'internal'
-  libsingularity_vapi_dir = join_paths(meson.project_build_root(), 'subprojects', 'libsingularity')
-  add_project_arguments(['--vapidir=' + libsingularity_vapi_dir], language: 'vala')
-endif
 
 gnome = import('gnome')
 resources = gnome.compile_resources(
