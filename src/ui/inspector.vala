@@ -976,7 +976,7 @@ namespace Singularity.Apps.Publish {
             var model = new StringList (null);
             foreach (string f in fams) model.append (f);
             var expr = new PropertyExpression (typeof (StringObject), null, "string");
-            var dd = new DropDown (model, expr);
+            var dd = new ChoiceButton (model, expr);
             dd.enable_search = true;
             dd.valign = Align.CENTER;
             dd.set_size_request (170, -1);
