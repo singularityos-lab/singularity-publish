@@ -46,6 +46,12 @@ namespace Singularity.Apps.Publish {
             if (settings != null) settings.set_boolean (key, v);
         }
 
+        internal PublishWindow shown_window () {
+            var w = target_window ();
+            w.present ();
+            return w;
+        }
+
         private PublishWindow target_window () {
             var w = get_active_window () as PublishWindow;
             if (w == null) {
@@ -373,6 +379,7 @@ namespace Singularity.Apps.Publish {
             menu.append_submenu (_("Tools"), tools);
 
             set_menubar (menu);
+            PublishIntents.install (this);
         }
 
         public override void activate () {

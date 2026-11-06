@@ -209,6 +209,7 @@ resources = gnome.compile_resources(
 
 ui = files(
   'src/ui/app.vala',
+  'src/ui/agent_intents.vala',
   'src/ui/canvas.vala',
   'src/ui/canvas_rulers.vala',
   'src/ui/cloud_actions.vala',
