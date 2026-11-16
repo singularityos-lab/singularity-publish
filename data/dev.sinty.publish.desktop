@@ -6,6 +6,7 @@ Icon=dev.sinty.publish
 Terminal=false
 Type=Application
 Categories=Office;Publishing;Graphics;
+X-Sinty-FormFactors=desktop;tablet;phone
 MimeType=application/x-sinty-publication;application/vnd.scribus;application/vnd.adobe.indesign-idml-package;application/x-mspublisher;application/vnd.ms-publisher;application/x-indesign;
 Keywords=publisher;desktop publishing;dtp;layout;flyer;brochure;newsletter;business card;poster;indesign;scribus;idml;sla;pub;mail merge;
 StartupWMClass=dev.sinty.publish
