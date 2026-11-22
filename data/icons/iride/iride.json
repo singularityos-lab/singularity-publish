@@ -1,0 +1,280 @@
+{
+ "format": 1,
+ "canvas": [
+  236,
+  236
+ ],
+ "box": [
+  0,
+  0,
+  236,
+  236
+ ],
+ "stack": [
+  {
+   "shadow": {
+    "dx": 0,
+    "dy": 5,
+    "blur": 6,
+    "color": "#1a3342",
+    "opacity": 0.4,
+    "region": [
+     -20,
+     -20,
+     276,
+     276
+    ]
+   },
+   "stack": [
+    {
+     "layer": "layers/000.svg",
+     "piece": "sheet"
+    },
+    {
+     "layer": "layers/001.svg",
+     "piece": "sheet"
+    }
+   ]
+  },
+  {
+   "clip": "M60 18H150L194 62V196Q194 214 176 214H60Q42 214 42 196V36Q42 18 60 18Z",
+   "stack": [
+    {
+     "layer": "layers/002.svg",
+     "piece": "sheet"
+    }
+   ]
+  },
+  {
+   "rim": "M60 18H150L194 62V196Q194 214 176 214H60Q42 214 42 196V36Q42 18 60 18Z",
+   "light": [
+    42.0,
+    18.0,
+    194.0,
+    214.0
+   ],
+   "piece": "sheet"
+  },
+  {
+   "shadow": {
+    "dx": 0,
+    "dy": 3,
+    "blur": 3,
+    "color": "#3d7a94",
+    "opacity": 0.35,
+    "region": [
+     -20,
+     -20,
+     276,
+     276
+    ]
+   },
+   "stack": [
+    {
+     "layer": "layers/004.svg",
+     "piece": "sheet"
+    }
+   ]
+  },
+  {
+   "layer": "layers/005.svg",
+   "piece": "title"
+  },
+  {
+   "layer": "layers/006.svg",
+   "piece": "title"
+  },
+  {
+   "shadow": {
+    "dx": 0,
+    "dy": 3,
+    "blur": 3.5,
+    "color": "#5b2a9e",
+    "opacity": 0.38,
+    "region": [
+     -20,
+     -20,
+     276,
+     276
+    ]
+   },
+   "stack": [
+    {
+     "layer": "layers/007.svg",
+     "piece": "photo"
+    }
+   ]
+  },
+  {
+   "clip": "M67 70H169A11 11 0 0 1 180 81V125A11 11 0 0 1 169 136H67A11 11 0 0 1 56 125V81A11 11 0 0 1 67 70Z",
+   "stack": [
+    {
+     "layer": "layers/008.svg",
+     "piece": "sun"
+    },
+    {
+     "layer": "layers/009.svg",
+     "piece": "mountains"
+    }
+   ]
+  },
+  {
+   "layer": "layers/010.svg",
+   "piece": "mountains"
+  },
+  {
+   "layer": "layers/011.svg",
+   "piece": "column-1"
+  },
+  {
+   "layer": "layers/012.svg",
+   "piece": "column-1"
+  },
+  {
+   "layer": "layers/013.svg",
+   "piece": "column-1"
+  },
+  {
+   "layer": "layers/014.svg",
+   "piece": "column-2"
+  },
+  {
+   "layer": "layers/015.svg",
+   "piece": "column-2"
+  },
+  {
+   "layer": "layers/016.svg",
+   "piece": "column-2"
+  }
+ ],
+ "motion": [
+  {
+   "piece": "sheet",
+   "origin": [
+    118.0,
+    118.0
+   ],
+   "tracks": []
+  },
+  {
+   "piece": "title",
+   "origin": [
+    60.0,
+    46.0
+   ],
+   "tracks": [
+    {
+     "kind": "reveal",
+     "from": [
+      0,
+      0,
+      60.0,
+      236
+     ],
+     "at": 300,
+     "duration": 553,
+     "ease": "linear"
+    }
+   ]
+  },
+  {
+   "piece": "photo",
+   "origin": [
+    56.0,
+    70.0
+   ],
+   "tracks": [
+    {
+     "kind": "scale",
+     "from": [
+      0.36,
+      0.36
+     ],
+     "at": 0,
+     "duration": 300,
+     "ease": "spring"
+    }
+   ]
+  },
+  {
+   "piece": "sun",
+   "origin": [
+    56.0,
+    70.0
+   ],
+   "tracks": [
+    {
+     "kind": "scale",
+     "from": [
+      0.36,
+      0.36
+     ],
+     "at": 0,
+     "duration": 300,
+     "ease": "spring"
+    }
+   ]
+  },
+  {
+   "piece": "mountains",
+   "origin": [
+    56.0,
+    70.0
+   ],
+   "tracks": [
+    {
+     "kind": "scale",
+     "from": [
+      0.36,
+      0.36
+     ],
+     "at": 0,
+     "duration": 300,
+     "ease": "spring"
+    }
+   ]
+  },
+  {
+   "piece": "column-1",
+   "origin": [
+    118.0,
+    118.0
+   ],
+   "tracks": [
+    {
+     "kind": "reveal",
+     "from": [
+      0,
+      0,
+      236,
+      150.0
+     ],
+     "at": 420,
+     "duration": 344,
+     "ease": "linear"
+    }
+   ]
+  },
+  {
+   "piece": "column-2",
+   "origin": [
+    118.0,
+    118.0
+   ],
+   "tracks": [
+    {
+     "kind": "reveal",
+     "from": [
+      0,
+      0,
+      236,
+      150.0
+     ],
+     "at": 600,
+     "duration": 344,
+     "ease": "linear"
+    }
+   ]
+  }
+ ]
+}

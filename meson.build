@@ -312,6 +312,36 @@ install_data('data/icons/dev.sinty.publish.svg',
   install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
 )
 
+iride = find_program('iride', required: get_option('iride'))
+if iride.found()
+  custom_target('iride-icon',
+    input: 'data/icons/iride/iride.json',
+    output: 'dev.sinty.publish.iride',
+    depend_files: files(
+      'data/icons/iride/layers/000.svg',
+      'data/icons/iride/layers/001.svg',
+      'data/icons/iride/layers/002.svg',
+      'data/icons/iride/layers/003.svg',
+      'data/icons/iride/layers/004.svg',
+      'data/icons/iride/layers/005.svg',
+      'data/icons/iride/layers/006.svg',
+      'data/icons/iride/layers/007.svg',
+      'data/icons/iride/layers/008.svg',
+      'data/icons/iride/layers/009.svg',
+      'data/icons/iride/layers/010.svg',
+      'data/icons/iride/layers/011.svg',
+      'data/icons/iride/layers/012.svg',
+      'data/icons/iride/layers/013.svg',
+      'data/icons/iride/layers/014.svg',
+      'data/icons/iride/layers/015.svg',
+      'data/icons/iride/layers/016.svg',
+    ),
+    command: [iride, 'build', meson.current_source_dir() / 'data' / 'icons' / 'iride', '@OUTPUT@'],
+    install: true,
+    install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps'
+  )
+endif
+
 install_data('data/capabilities/dev.sinty.Collab.Publication1.ini',
   install_dir: get_option('datadir') / 'singularity' / 'capabilities')
 
