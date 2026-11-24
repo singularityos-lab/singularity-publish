@@ -147,6 +147,47 @@ namespace Singularity.Apps.Publish {
             changed ();
         }
 
+        public Variant save_history () {
+            var steps = new VariantBuilder (new VariantType ("a(bssis)"));
+            foreach (var s in undo_stack) steps.add ("(bssis)", false, s.label, NativeFormat.to_xml (s.state), s.page, s.key);
+            foreach (var s in redo_stack) steps.add ("(bssis)", true, s.label, NativeFormat.to_xml (s.state), s.page, s.key);
+            return steps.end ();
+        }
+
+        public Gee.HashMap<string, Bytes> history_media () {
+            var media = new Gee.HashMap<string, Bytes> ();
+            foreach (var s in undo_stack) {
+                foreach (var e in s.state.media.entries) {
+                    if (!pub.media.has_key (e.key)) media[e.key] = e.value;
+                }
+            }
+            foreach (var s in redo_stack) {
+                foreach (var e in s.state.media.entries) {
+                    if (!pub.media.has_key (e.key)) media[e.key] = e.value;
+                }
+            }
+            return media;
+        }
+
+        public void restore_history (Variant steps, Gee.Map<string, Bytes> media) throws Error {
+            undo_stack.clear ();
+            redo_stack.clear ();
+            var it = steps.iterator ();
+            bool redo;
+            string label, xml, key;
+            int page;
+            while (it.next ("(bssis)", out redo, out label, out xml, out page, out key)) {
+                var p = NativeFormat.from_xml (xml);
+                foreach (var e in pub.media.entries) p.media[e.key] = e.value;
+                foreach (var e in media.entries) p.media[e.key] = e.value;
+                p.base_dir = pub.base_dir;
+                p.file_name = pub.file_name;
+                var step = new UndoStep (label, p, page, key);
+                if (redo) redo_stack.add (step);
+                else undo_stack.add (step);
+            }
+        }
+
         public void replace_publication (Publication p) {
             pub = p;
             undo_stack.clear ();

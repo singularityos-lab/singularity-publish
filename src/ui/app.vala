@@ -2,9 +2,10 @@ using Gtk;
 
 namespace Singularity.Apps.Publish {
 
-    public class PublishApp : Singularity.Application {
+    public class PublishApp : Singularity.Application, Singularity.Migration.Migratable {
         public GLib.Settings? settings = null;
         private Singularity.DockMenu? dock_menu = null;
+        private bool rebuilt = false;
 
         public PublishApp () {
             Object (application_id: "dev.sinty.publish", flags: ApplicationFlags.HANDLES_OPEN);
@@ -386,6 +387,56 @@ namespace Singularity.Apps.Publish {
             var w = get_active_window ();
             if (w == null) w = new PublishWindow (this);
             w.present ();
+        }
+
+        public Variant save_model () {
+            return new VariantDict ().end ();
+        }
+
+        public async void restore_model (Variant model) throws Error {
+        }
+
+        public string window_kind (Gtk.Window w) {
+            return (w is PublishWindow) ? "publication" : "";
+        }
+
+        public Variant save_window (Gtk.Window w) {
+            return ((PublishWindow) w).save_migration ();
+        }
+
+        public string[] files () {
+            string[] found = {};
+            foreach (var w in get_windows ()) {
+                var pw = w as PublishWindow;
+                if (pw == null) continue;
+                foreach (var f in pw.migration_files ()) {
+                    if (!(f in found)) found += f;
+                }
+            }
+            return found;
+        }
+
+        public void prepare_move () throws Singularity.Migration.MigrationError {
+            foreach (var w in get_windows ()) {
+                var pw = w as PublishWindow;
+                if (pw != null) pw.prepare_move ();
+            }
+        }
+
+        public async Gtk.Window? rebuild_window (string kind, Variant data) throws Error {
+            if (kind != "publication") return null;
+            if (!rebuilt) {
+                rebuilt = true;
+                var empty = new Gee.ArrayList<PublishWindow> ();
+                foreach (var open in get_windows ()) {
+                    var pw = open as PublishWindow;
+                    if (pw != null && pw.doc == null) empty.add (pw);
+                }
+                foreach (var pw in empty) pw.destroy ();
+            }
+            var w = new PublishWindow (this);
+            w.restore_migration (data);
+            return w;
         }
 
         public override void open (File[] files, string hint) {

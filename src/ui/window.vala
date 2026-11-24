@@ -46,6 +46,7 @@ namespace Singularity.Apps.Publish {
         private uint autosave_id = 0;
         private string[] doc_actions = {};
         private int find_index = -1;
+        private const string[] TOGGLES = { "preview-mode", "hidden-chars", "merge-preview", "merge-catalogue" };
         private static Gee.ArrayList<Item> item_clip = new Gee.ArrayList<Item> ();
         private static Gee.HashMap<int, Story> item_clip_stories = new Gee.HashMap<int, Story> ();
         private static Gee.HashMap<string, Bytes> item_clip_media = new Gee.HashMap<string, Bytes> ();
@@ -866,6 +867,119 @@ namespace Singularity.Apps.Publish {
             pages_panel.show_masters (on);
             refresh_visible_panel ();
             canvas.queue_draw ();
+        }
+
+        public string[] migration_files () {
+            if (doc == null || doc.path == null) return {};
+            return { Singularity.Migration.portable_path (File.new_for_path (doc.path)) };
+        }
+
+        public void prepare_move () {
+            canvas.end_edit ();
+        }
+
+        private static Variant media_variant (Gee.Map<string, Bytes> media) {
+            var keys = new Gee.ArrayList<string> ();
+            keys.add_all (media.keys);
+            keys.sort ();
+            var b = new VariantBuilder (new VariantType ("a{say}"));
+            foreach (var k in keys) b.add ("{s@ay}", k, new Variant.from_bytes (VariantType.BYTESTRING, media[k], true));
+            return b.end ();
+        }
+
+        private static Gee.HashMap<string, Bytes> media_map (Variant? v) {
+            var media = new Gee.HashMap<string, Bytes> ();
+            if (v == null) return media;
+            var it = v.iterator ();
+            string key;
+            Variant data;
+            while (it.next ("{s@ay}", out key, out data)) media[key] = data.get_data_as_bytes ();
+            return media;
+        }
+
+        public Variant save_migration () {
+            var d = new VariantDict ();
+            d.insert_value ("open", new Variant.boolean (doc != null));
+            if (doc == null) return d.end ();
+            d.insert_value ("path", new Variant.string (doc.path != null ? Singularity.Migration.portable_path (File.new_for_path (doc.path)) : ""));
+            d.insert_value ("kind", new Variant.int32 ((int) doc.kind));
+            d.insert_value ("modified", new Variant.boolean (doc.modified));
+            d.insert_value ("note", new Variant.string (doc.import_note));
+            d.insert_value ("xml", new Variant.string (NativeFormat.to_xml (doc.pub)));
+            d.insert_value ("media", media_variant (doc.pub.media));
+            d.insert_value ("history", doc.save_history ());
+            d.insert_value ("history-media", media_variant (doc.history_media ()));
+            d.insert_value ("page", new Variant.int32 (doc.current_page));
+            d.insert_value ("master", new Variant.boolean (canvas.master_mode));
+            d.insert_value ("master-id", new Variant.string (canvas.master_id));
+            d.insert_value ("selection", (Variant) canvas.selected_ids ());
+            d.insert_value ("tool", new Variant.int32 ((int) canvas.tool));
+            d.insert_value ("scale", new Variant.double (canvas.scale));
+            d.insert_value ("auto-fit", new Variant.boolean (canvas.auto_fit));
+            d.insert_value ("fit-spread", new Variant.boolean (canvas.fit_spread));
+            d.insert_value ("separations", new Variant.boolean (canvas.separations));
+            d.insert_value ("panel", new Variant.string (right_revealer.reveal_child ? inspector_panel.page : ""));
+            var toggles = new VariantBuilder (new VariantType ("a{sb}"));
+            foreach (var name in TOGGLES) {
+                var state = get_action_state (name);
+                if (state != null) toggles.add ("{sb}", name, state.get_boolean ());
+            }
+            d.insert_value ("toggles", toggles.end ());
+            return d.end ();
+        }
+
+        public void restore_migration (Variant data) throws Error {
+            var d = new VariantDict (data);
+            var open = d.lookup_value ("open", VariantType.BOOLEAN);
+            if (open == null || !open.get_boolean ()) return;
+            var p = NativeFormat.from_xml (d.lookup_value ("xml", VariantType.STRING).get_string ());
+            foreach (var e in media_map (d.lookup_value ("media", new VariantType ("a{say}"))).entries) p.media[e.key] = e.value;
+            string portable = d.lookup_value ("path", VariantType.STRING).get_string ();
+            string? path = portable != "" ? Singularity.Migration.local_file (portable).get_path () : null;
+            if (path != null) {
+                p.base_dir = Path.get_dirname (path);
+                p.file_name = Path.get_basename (path);
+            }
+            var nd = new Document (p);
+            nd.path = path;
+            nd.kind = (FileKind) d.lookup_value ("kind", VariantType.INT32).get_int32 ();
+            nd.import_note = d.lookup_value ("note", VariantType.STRING).get_string ();
+            nd.restore_history (d.lookup_value ("history", new VariantType ("a(bssis)")),
+                media_map (d.lookup_value ("history-media", new VariantType ("a{say}"))));
+            nd.current_page = d.lookup_value ("page", VariantType.INT32).get_int32 ().clamp (0, int.max (p.pages.size - 1, 0));
+            nd.modified = d.lookup_value ("modified", VariantType.BOOLEAN).get_boolean ();
+            load_document (nd);
+            if (d.lookup_value ("master", VariantType.BOOLEAN).get_boolean ())
+                set_master_mode (true, d.lookup_value ("master-id", VariantType.STRING).get_string ());
+            else
+                go_to_page (nd.current_page);
+            var toggles = d.lookup_value ("toggles", new VariantType ("a{sb}"));
+            if (toggles != null) {
+                var it = toggles.iterator ();
+                string name;
+                bool on;
+                while (it.next ("{sb}", out name, out on)) {
+                    var state = get_action_state (name);
+                    if (state != null && state.get_boolean () != on) ((GLib.ActionGroup) this).activate_action (name, null);
+                }
+            }
+            if (d.lookup_value ("separations", VariantType.BOOLEAN).get_boolean () && !canvas.separations)
+                ((GLib.ActionGroup) this).activate_action ("toggle-separations", null);
+            string panel = d.lookup_value ("panel", VariantType.STRING).get_string ();
+            if (panel != "") toggle_panel (panel, true);
+            canvas.set_tool ((Tool) d.lookup_value ("tool", VariantType.INT32).get_int32 ());
+            canvas.restore_view (d.lookup_value ("auto-fit", VariantType.BOOLEAN).get_boolean (),
+                d.lookup_value ("fit-spread", VariantType.BOOLEAN).get_boolean (),
+                d.lookup_value ("scale", VariantType.DOUBLE).get_double ());
+            var selection = d.lookup_value ("selection", new VariantType ("ai"));
+            if (selection != null) {
+                int[] ids = {};
+                var it = selection.iterator ();
+                int id;
+                while (it.next ("i", out id)) ids += id;
+                canvas.reselect_ids (ids);
+            }
+            canvas.queue_allocate ();
         }
 
         public void go_to_page (int index) {

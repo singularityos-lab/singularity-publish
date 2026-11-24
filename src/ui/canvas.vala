@@ -455,6 +455,17 @@ namespace Singularity.Apps.Publish {
             return best;
         }
 
+        public void restore_view (bool fit, bool spread, double z) {
+            fit_spread = spread;
+            auto_fit = fit;
+            if (fit) return;
+            pending_center = false;
+            scale = z.clamp (0.05, 40);
+            relayout ();
+            queue_allocate ();
+            queue_draw ();
+        }
+
         public void zoom_to (double z, double anchor_px = -1, double anchor_py = -1) {
             if (pub == null) return;
             auto_fit = false;
